@@ -1,0 +1,110 @@
+/* Persona creadora */
+.persona-creadora {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1rem;
+    background-color: #776b5d;
+    color: white;
+    height: 55vh;
+  }
+  
+  .persona-creadora-icono {
+    width: 6rem;
+    height: 6rem;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .persona-creadora-titulo {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .persona-creadora-descripcion {
+    text-align: center;
+    max-width: 40rem;
+    font-size: 0.875rem; /* text-sm */
+    opacity: 0.9;
+  }
+  
+  /* ¿Cómo empezamos? */
+  .como-empezamos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    background-color: #ebe3d5;
+  }
+  
+  .como-empezamos-texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .como-empezamos-titulo {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #776b5d;
+  }
+  
+  .como-empezamos-parrafo {
+    margin-bottom: 1rem;
+    color: #776b5d;
+  }
+  
+  .como-empezamos-video {
+    width: 100%;
+    max-width: 24rem;
+    aspect-ratio: 16/9;
+    background-color: white;
+    border-radius: 0.5rem;
+    border: 2px solid rgba(119, 107, 93, 0.2);
+    margin: 0 auto;
+  }
+  
+  /* Misión y visión */
+  .mision-vision {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    background-color: #b0a695;
+  }
+  
+  .mision,
+  .vision {
+    text-align: center;
+  }
+  
+  .mision-titulo,
+  .vision-titulo {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #776b5d;
+  }
+  
+  .mision-descripcion,
+  .vision-descripcion {
+    max-width: 24rem;
+    margin: 0 auto;
+    color: #776b5d;
+  }
+  @media (min-width: 768px) {
+    .como-empezamos {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .mision-vision {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+ 

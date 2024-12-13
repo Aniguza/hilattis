@@ -1,0 +1,287 @@
+/* Estilos globales para el body */
+body {
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  /* Estilo de la imagen de fondo */
+  .background-image {
+    width: 100%;
+    filter: brightness(0.3);
+    height: 100vh;
+    object-fit: cover;
+  }
+  
+  /* Contenedor de la capa que cubre el fondo */
+  .content-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Estilo del contenedor de texto */
+  .text-container {
+    width: 100%;
+    max-width: 70vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Estilo del título */
+  .title {
+    color: #BEAC8B;
+    font-weight: bold;
+    line-height: 1.25;
+    font-size: 5vw;
+  }
+  
+  /* Estilo del párrafo */
+  .description {
+    color: #BEAC8B;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    margin-top: 1rem;
+    font-size: 2vw;
+  }
+  
+  @media (max-width: 426px) {
+    .text-container {
+        max-width: 70vw;
+    }
+    .title{
+        font-size: 6vw;
+    }
+    .description {
+        font-size: 3vw;
+
+    }
+
+  }
+  
+ 
+  
+  /* Sección con fondo negro */
+  .bg-black {
+    background-color: black;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+  
+  /* Estilo del texto blanco */
+  .text-white {
+    color: white;
+  }
+  
+  /* -------------------------------------------Sección de productos --------------------------------------------*/
+.products-section {
+    background-color: #f7e9c4;
+    padding: 9vw 0;
+    text-align: center;
+  }
+  
+  .products-header {
+    margin-bottom: 3rem;
+  }
+  
+  .products-title {
+    font-size: 5vw;
+    font-weight: bold;
+    color: #1C160F;
+  }
+  
+  .products-description {
+    font-size: 1.7vw;
+    color: #615944;
+    margin-top: 1rem;
+    max-width: 50vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Contenedor de productos */
+  .products-container {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+  }
+  
+  /* Tarjeta de producto */
+  .product-card {
+    max-width: 32vw;
+    position: relative;
+    background-color: white;
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: block;
+  }
+  
+  .product-image-container {
+    position: relative;
+  }
+  
+  .product-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    filter: brightness(0.5);
+  }
+  
+  /* Texto sobre la imagen */
+  .product-text {
+    position: absolute;
+    bottom: 10%; 
+    left: 5%;  
+    color: #E1D7BF;
+    text-align: left; 
+    padding: 0 1rem;
+    z-index: 10;
+  }
+  
+  .product-name {
+    font-size: 3vw;
+    font-weight: bold;
+  }
+  
+  .product-variants {
+    font-size: 1rem;
+  }
+  
+  .product-card:hover .product-text {
+    opacity: 0.8; 
+  }  
+  
+  @media (max-width: 426px) {
+    
+    .products-container {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+  
+    .product-card {
+      max-width: 60%;
+    }
+    
+    .product-name {
+      font-size: 5vw;
+    }
+      
+    .product-variants {
+      font-size: 0.7rem;
+    }
+      
+    .products-title {
+      font-size: 6vw;
+    }
+      
+    .products-description {
+      font-size: 2.5vw;
+    }  
+  }
+  
+/* --------------------Seccion de preguntas ----------------------------------------------- */
+.faq-section {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.bg-preguntas {
+  width: 100%;
+  filter: brightness(0.5);
+  height: 100vh;
+  object-fit: cover;
+}
+.faq-container {
+  position: absolute;
+  inset: 0;
+  width: 70%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.7fr 1fr;
+  gap: 2vw;
+  align-items: center;
+}
+
+.faq-title {
+  color: #BEAC8B;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.faq-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.faq-item {
+  background: #E1D7BF;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #1C160F;
+  transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+  background-color: rgba(230, 213, 184, 1);
+}
+
+.faq-icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 1.5rem;
+}
+
+.faq-answer.active {
+  max-height: 200px;
+  padding: 1rem 1.5rem 1.5rem;
+}
+
+.faq-answer p {
+  margin: 0;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .faq-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .faq-title {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .faq-question{
+    font-size: 0.9rem;
+  }
+}
+
