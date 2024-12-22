@@ -9,9 +9,9 @@ export const About = () => {
       <Navbar />
       <section className="persona-creadora">
         <div className="persona-creadora-icono"></div>
-        <h1 className="persona-creadora-titulo">Persona creadora</h1>
+        <h1 className="persona-creadora-titulo">Soledad Carrasco</h1>
         <p className="persona-creadora-descripcion">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Gerente y fundadora de Corporación Hilattis Kausay S.A.C.
         </p>
       </section>
 
@@ -32,15 +32,13 @@ export const About = () => {
         <div className="mision">
           <h2 className="mision-titulo">Misión</h2>
           <p className="mision-descripcion">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Proveer combustibles de origen vegetal, como carbón y leña de alta calidad, promoviendo prácticas sostenibles y generando empleo digno en las comunidades rurales, para satisfacer las necesidades de nuestros clientes y contribuir al cuidado del medio ambiente.
           </p>
         </div>
         <div className="vision">
           <h2 className="vision-titulo">Visión</h2>
           <p className="vision-descripcion">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Ser la empresa líder en la producción y comercialización de carbón y leña. Sostenible en el mercado nacional e internacional, reconocida por nuestra calidad, compromiso con el medio ambiente y el impulso al desarrollo de las comunidades rurales.
           </p>
         </div>
       </section>

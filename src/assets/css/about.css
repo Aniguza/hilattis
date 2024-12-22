@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 4rem 1rem;
+    padding: 6rem 3rem 4rem 3rem;
     background-color: #776b5d;
     color: white;
     height: 55vh;
@@ -18,19 +18,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1rem;
   }
   
   .persona-creadora-titulo {
-    font-size: 1.875rem; /* text-3xl */
+    font-size: 1.4rem; /* text-3xl */
     font-weight: 600;
+    margin-top: 1rem;
     margin-bottom: 0.5rem;
   }
   
   .persona-creadora-descripcion {
     text-align: center;
     max-width: 40rem;
-    font-size: 0.875rem; /* text-sm */
+    font-size: 0.8rem; /* text-sm */
     opacity: 0.9;
   }
   
@@ -39,7 +39,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
-    padding: 4rem 2rem;
+    padding: 4rem 3rem;
     background-color: #ebe3d5;
   }
   
@@ -47,10 +47,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-size: 14px;
   }
   
   .como-empezamos-titulo {
-    font-size: 1.5rem; /* text-2xl */
+    font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
     color: #776b5d;
@@ -75,36 +76,65 @@
   .mision-vision {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 4rem 2rem;
+    gap: 2.5rem;
+    padding: 4rem 3rem;
     background-color: #b0a695;
   }
   
   .mision,
   .vision {
+    color: #fff;
     text-align: center;
+    font-size: 0.8rem;
   }
   
   .mision-titulo,
   .vision-titulo {
-    font-size: 1.5rem; /* text-2xl */
+    font-size: 1.5rem; 
     font-weight: bold;
     margin-bottom: 1rem;
-    color: #776b5d;
+    color: #1C160F;
   }
   
   .mision-descripcion,
   .vision-descripcion {
     max-width: 24rem;
     margin: 0 auto;
-    color: #776b5d;
+    color: #1C160F;
   }
   @media (min-width: 768px) {
+    .persona-creadora-titulo {
+      font-size: 1.3rem; 
+    }
+    
+    .persona-creadora-descripcion {
+      font-size: 0.9rem; 
+    }
     .como-empezamos {
       grid-template-columns: repeat(2, 1fr);
+    }
+    .como-empezamos-texto {
+      margin-left: 7vw;
+      font-size: 1.4vw;
     }
     .mision-vision {
       grid-template-columns: repeat(2, 1fr);
     }
+
+
   }
- 
+  @media (min-width: 1024px) {
+    .persona-creadora-titulo {
+      font-size: 1.6rem; 
+    }
+    
+    .persona-creadora-descripcion {
+      font-size: 1.1rem; 
+    }
+    .como-empezamos-texto {
+      font-size: 1vw;
+    }
+    .mision, .vision {
+      font-size: 1rem;    
+    }
+  }

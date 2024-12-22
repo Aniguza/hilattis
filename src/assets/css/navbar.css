@@ -1,75 +1,85 @@
 /* Estilo base del Navbar */
 .navbar {
-    position: fixed;
-    width: 100%;
-    padding: 16px;
-    top: 0;
-    z-index: 10;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    background-color: transparent; /* Fondo transparente por defecto */
-  }
-  
-  /* Estilo del Navbar cuando se hace scroll */
-  .navbar.scrolled {
-    background-color: #1C160F; /* Fondo oscuro semi-transparente */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  }
-  
-  /* Estilo del contenedor */
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  /* Estilos del logo */
-  .logo {
-    margin-left: 30px;
-    color: #E1D7BF;
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  /* Estilos de los enlaces de navegación */
-  .navbar-link {
-    color: #E1D7BF;
-    text-decoration: none;
-    padding: 8px 12px;
-    font-weight: bold;
-    transition: background-color 0.2s ease;
-  }
-  
-  .navbar-link:hover {
-    background-color: #2563eb; /* Color de fondo en hover */
-    border-radius: 8px;
-  }
-  
-  /* Estilos del botón hamburguesa */
-  .hamburger-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  /* Menú desplegable para pantallas pequeñas */
-  .md\\:hidden {
-    display: block;
-  }
-  
-  /* Estilo de los enlaces en el menú desplegable */
-  .md\\:hidden .navbar-link {
-    padding: 16px;
-    text-align: center;
-    width: 100%;
-    display: block;
-    background-color: #111827;
-    color: white;
-  }
-  
-  .md\\:hidden .navbar-link:hover {
-    background-color: #2563eb;
-  }
-  
+  position: fixed;
+  width: 100%;
+  padding: 16px;
+  top: 0;
+  z-index: 10;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estilo del Navbar transparente */
+.navbar.transparent {
+  background-color: transparent; /* Fondo transparente por defecto */
+}
+
+/* Estilo del Navbar cuando se hace scroll o no está en la página de inicio */
+.navbar.scrolled {
+  background-color: #1C160F; /* Fondo oscuro semi-transparente */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo del contenedor */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Estilos del logo */
+.logo {
+  margin-left: 70px;
+  color: #E1D7BF;
+  width: 100px;
+  font-weight: bold;
+}
+.navbar-logo {
+  color: #E1D7BF;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+/* Estilos de los enlaces de navegación */
+.navbar-link {
+  color: #b7a06a;
+  text-decoration: none;
+  padding: 8px 12px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.navbar-link:hover {
+  background-color: #E1D7BF; /* Color de fondo en hover */
+  border-radius: 8px;
+  color: #1C160F;
+}
+
+/* Estilos del botón hamburguesa */
+.hamburger-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Menú desplegable para pantallas pequeñas */
+.md\:hidden {
+  display: block;
+}
+
+/* Estilo de los enlaces en el menú desplegable */
+.md\:hidden .navbar-link {
+  padding: 16px;
+  text-align: center;
+  width: 100%;
+  display: block;
+  background-color: #1C160F; /* Fondo oscuro para el menú desplegable */
+  color: white;
+}
+
+.md\:hidden .navbar-link:hover {
+  background-color: #E1D7BF;
+  color: #1C160F; /* Color de fondo en hover para el menú desplegable */
+}
