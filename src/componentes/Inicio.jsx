@@ -2,37 +2,64 @@ import React, { useEffect, useState } from "react";
 import "../assets/css/inicio.css";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
+import { fetchData } from "./apiService";
 
 import Fondo from "../assets/imgs/hilatis-fondo.jpeg";
-import Carbon from "../assets/imgs/carbon.jpg";
-import Madera from "../assets/imgs/madera.jpg";
 
 export const Inicio = ({ setCanAccess }) => {
-  useEffect(() => {
-    // Permitir acceso al estar en Inicio
-    setCanAccess(true);
-    localStorage.setItem("canAccess", "true"); // Guardar permiso de acceso en localStorage
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [userName, setUserName] = useState('');
 
-    // Al desmontar, el acceso no se revierte
+  useEffect(() => {
+    setCanAccess(true);
+    localStorage.setItem("canAccess", "true");
+  
+    const fetchInitialData = async () => {
+      try {
+        const [productsData, heroData, userData] = await Promise.all([
+          fetchData('/productos'),
+          fetchData('/api/usuarios/'),
+        ]);
+  
+        setProducts(productsData);
+        setHeroContent(heroData);
+  
+        // Verifica que userData tenga los datos correctos
+        if (userData && userData.nombre) {
+          const fullName = userData.nombre; // Obtén el nombre completo
+          const firstName = fullName.split(' ')[0]; // Toma solo el primer nombre
+          setUserName(firstName); // Asigna el primer nombre a userName
+          console.log("Nombre del usuario:", firstName);
+        }
+  
+        setIsLoading(false);
+      } catch (err) {
+        console.error("Error fetching initial data:", err);
+        setError('Error al cargar los datos. Por favor, intenta de nuevo más tarde.');
+        setIsLoading(false);
+      }
+    };
+  
+    fetchInitialData();
+  
     return () => {
       setCanAccess(true);
     };
   }, [setCanAccess]);
+  
 
-
-  // Estado para manejar la FAQ
   const [activeIndex, setActiveIndex] = useState(null);
 
   const faqItems = [
     {
       question: "How long until we deliver your first blog post?",
-      answer:
-        "We typically deliver your first blog post within 5-7 business days after receiving your requirements.",
+      answer: "We typically deliver your first blog post within 5-7 business days after receiving your requirements.",
     },
     {
       question: "How do you ensure quality in your blog posts?",
-      answer:
-        "Our team works efficiently to ensure quick turnaround times while maintaining quality.",
+      answer: "Our team works efficiently to ensure quick turnaround times while maintaining quality.",
     },
     {
       question: "What factors affect the delivery timeline?",
@@ -44,7 +71,6 @@ export const Inicio = ({ setCanAccess }) => {
     },
   ];
 
-  // Función para alternar la visibilidad de respuestas en FAQ
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
@@ -59,9 +85,11 @@ export const Inicio = ({ setCanAccess }) => {
         </div>
         <div className="content-overlay">
           <div className="text-container">
-            <h1 className="title">Innovación y Sostenibilidad en Productos Naturales de origen vegetal</h1>
-            <p className="description">
-            Combinamos la innovación con la sostenibilidad para ofrecer productos naturales de alta calidad, contribuyendo al bienestar de nuestras comunidades y el cuidado del medio ambiente.            </p>
+            <h1 className="title">
+            {isLoading ? 'Cargando...' : `Bienvenido, ${userName || 'Usuario'}`}
+
+            </h1>
+            <p className="description"></p>
           </div>
         </div>
       </div>
@@ -76,27 +104,23 @@ export const Inicio = ({ setCanAccess }) => {
         </div>
 
         <div className="products-container">
-          {/* Producto 1 */}
-          <a href="#" className="product-card">
-            <div className="product-image-container">
-              <img src={Carbon} alt="Carbón" className="product-image" />
-              <div className="product-text">
-                <h3 className="product-name">Carbón</h3>
-                <p className="product-variants">+4 variantes</p>
-              </div>
-            </div>
-          </a>
-
-          {/* Producto 2 */}
-          <a href="#" className="product-card">
-            <div className="product-image-container">
-              <img src={Madera} alt="Madera" className="product-image" />
-              <div className="product-text">
-                <h3 className="product-name">Madera</h3>
-                <p className="product-variants">+5 variantes</p>
-              </div>
-            </div>
-          </a>
+          {isLoading ? (
+            <p>Cargando productos...</p>
+          ) : error ? (
+            <p>{error}</p>
+          ) : (
+            products.map((product) => (
+              <a key={product.id} href="#" className="product-card">
+                <div className="product-image-container">
+                  <img src={product.image} alt={product.name} className="product-image" />
+                  <div className="product-text">
+                    <h3 className="product-name">{product.name}</h3>
+                    <p className="product-variants">+{product.variants} variantes</p>
+                  </div>
+                </div>
+              </a>
+            ))
+          )}
         </div>
       </section>
 
