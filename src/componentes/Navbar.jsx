@@ -36,7 +36,7 @@ export const Navbar = () => {
         <div className="hidden md:flex flex-grow justify-center space-x-4">
           <Link to="/" className="navbar-link">Tienda</Link>
           <Link to="/About" className="navbar-link">Acerca de</Link>
-          <Link to="" className="navbar-link">Proyectos</Link>
+          <Link to="/Proyectos" className="navbar-link">Proyectos</Link>
           <Link to="/Contacto" className="navbar-link">Contacto</Link>
         </div>
 

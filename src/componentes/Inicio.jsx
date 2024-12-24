@@ -55,8 +55,8 @@ export const Inicio = () => {
                 ? "Cargando..."
                 : error
                 ? `Error: ${error}`
-                : data && data.length > 0 // Verifica si el arreglo tiene elementos
-                ? data[0].title // Accede al primer elemento del arreglo y su campo title
+                : data && data.length > 0 
+                ? data[0].title 
                 : "No se encontró información"}
             </h1>
             <p className="description">
@@ -64,8 +64,8 @@ export const Inicio = () => {
                 ? "Cargando..."
                 : error
                 ? `Error: ${error}`
-                : data && data.length > 0 // Verifica si el arreglo tiene elementos
-                ? data[0].subtitle // Accede al primer elemento del arreglo y su campo title
+                : data && data.length > 0 
+                ? data[0].subtitle
                 : "No se encontró información"}
             </p>
           </div>

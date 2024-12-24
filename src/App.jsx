@@ -4,6 +4,7 @@ import { Navbar } from "./componentes/Navbar";
 import { Inicio } from "./componentes/Inicio";
 import { About } from "./componentes/About";
 import { Contacto } from "./componentes/Contacto";
+import { Proyectos } from "./componentes/Proyectos";
 import { RutasProtegidas } from "./componentes/RutasProtegidas";
 
 function App() {
@@ -27,6 +28,14 @@ function App() {
           element={
             <RutasProtegidas isAllowed={canAccess}>
               <Contacto />
+            </RutasProtegidas>
+          }
+        />
+        <Route
+          path="/Proyectos"
+          element={
+            <RutasProtegidas isAllowed={canAccess}>
+              <Proyectos />
             </RutasProtegidas>
           }
         />
