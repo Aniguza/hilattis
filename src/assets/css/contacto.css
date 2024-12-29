@@ -36,7 +36,7 @@
 }
 
 .content-section {
-  background-color: #f5efe7;
+  background-color: #E1D7BF;
   padding: 48px 16px;
 }
 
@@ -45,7 +45,20 @@
   flex-direction: column;
   gap: 32px;
 }
+svg{
+  color: #000;
+}
+.label-cont{
+  color: #000;
+  font-size: 30px;
+}
+.info-label{
+  display: flex;
+  justify-content: center;
+  height: 6px;
+  gap: 10px;
 
+}
 .contact-form {
   background-color: #beac8b;
   padding: 24px;

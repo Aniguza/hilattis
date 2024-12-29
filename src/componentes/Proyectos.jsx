@@ -9,37 +9,37 @@ export const Proyectos = () => {
       id: 1,
       title: "Proyecto Residencial",
       description: "Diseño minimalista para espacios modernos",
-      image: "/placeholder.svg?height=300&width=400",
+      image: "/src/assets/imgs/hilatis-fondo.jpeg",
     },
     {
       id: 2,
       title: "Diseño Comercial",
       description: "Espacios comerciales con estilo único",
-      image: "/placeholder.svg?height=300&width=400",
+      image: "/src/assets/imgs/hilatis-fondo.jpeg",
     },
     {
       id: 3,
       title: "Renovación Urbana",
       description: "Transformación de espacios públicos",
-      image: "/placeholder.svg?height=300&width=400",
+      image: "/src/assets/imgs/hilatis-fondo.jpeg",
     },
     {
       id: 4,
       title: "Diseño Sostenible",
       description: "Proyectos eco-amigables y eficientes",
-      image: "/placeholder.svg?height=300&width=400",
+      image: "/src/assets/imgs/hilatis-fondo.jpeg",
     },
     {
       id: 5,
       title: "Interiores Modernos",
       description: "Espacios contemporáneos y funcionales",
-      image: "/placeholder.svg?height=300&width=400",
+      image: "/src/assets/imgs/hilatis-fondo.jpeg",
     },
     {
       id: 6,
       title: "Proyecto Corporativo",
       description: "Diseño de oficinas y espacios de trabajo",
-      image: "/placeholder.svg?height=300&width=400",
+      image: "/src/assets/imgs/hilatis-fondo.jpeg",
     },
   ];
 
@@ -60,7 +60,13 @@ export const Proyectos = () => {
       <div className="container-proyectos">
         <div className="projects-grid">
           {projects.map((project) => (
-            <div key={project.id} className="project-card">
+            <a
+              key={project.id}
+              href={project.link}
+              className="project-card"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <div className="project-image">
                 <img src={project.image} alt={project.title} />
               </div>
@@ -70,7 +76,7 @@ export const Proyectos = () => {
                   <p className="project-description">{project.description}</p>
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
