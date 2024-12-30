@@ -4,6 +4,7 @@ import { StarIcon, ExclamationCircleIcon } from "@heroicons/react/24/outline";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import "../assets/css/contacto.css";
+import Fondo from "../assets/imgs/hilatis-fondo.jpeg";
 
 export const Contacto = () => {
   const {
@@ -11,7 +12,7 @@ export const Contacto = () => {
     handleSubmit,
     setValue,
     watch,
-    formState: { errors }
+    formState: { errors },
   } = useForm({
     defaultValues: {
       nombre: "",
@@ -20,8 +21,8 @@ export const Contacto = () => {
       empresa: "",
       rating: 0,
       mensaje: "",
-      privacyPolicy: false
-    }
+      privacyPolicy: false,
+    },
   });
 
   const [submittedData, setSubmittedData] = useState(null);
@@ -53,82 +54,82 @@ export const Contacto = () => {
           <div className="content-grid">
             {/* Información de contacto */}
             <div className="contact-info">
-              <div className="space-y-6">
+              <img src={Fondo} alt="" className="imagen-cont"/>
+              <div className="items-info">
                 {/* Teléfono */}
-                <div className="flex items-center gap-3">
-                  
+                <div className="">
                   <div>
                     <h3 className="label-cont font-semibold">Teléfono</h3>
                     <div className="info-label">
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                      />
-                    </svg>
-                    <p className="text-gray-600">+51 999 270 883</p>
-                  </div>
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                        />
+                      </svg>
+                      <p className="text-gray-600">+51 999 270 883</p>
+                    </div>
                   </div>
                 </div>
 
                 {/* Correo */}
                 <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 flex items-center justify-center">
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </div>
                   <div>
                     <h3 className="label-cont font-semibold">Correo</h3>
-                    <p className="text-gray-600">email@nistiskusav.com</p>
+                    <div className="info-label">
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                        />
+                      </svg>
+                      <p className="text-gray-600">email@nistiskusav.com</p>
+                    </div>
                   </div>
                 </div>
 
                 {/* Ubicación */}
                 <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 flex items-center justify-center">
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                    </svg>
-                  </div>
                   <div>
                     <h3 className="label-cont font-semibold">Ubicación</h3>
-                    <p className="text-gray-600">
-                      Calle los girasoles #455 - Castilla
-                    </p>
+                    <div className="info-label">
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                      <p className="text-gray-600">
+                        Calle los girasoles #455 - Castilla
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -147,16 +148,16 @@ export const Contacto = () => {
                         placeholder="John Carter"
                         className="input-field"
                         {...register("nombre", {
-                          required: "Este campo es requerido"
+                          required: "Este campo es requerido",
                         })}
                       />
                     </div>
                     {errors.nombre && (
-                        <p className="error-message">
-                          <ExclamationCircleIcon className="error-icon" />
-                          <span>{errors.nombre.message}</span>
-                        </p>
-                      )}
+                      <p className="error-message">
+                        <ExclamationCircleIcon className="error-icon" />
+                        <span>{errors.nombre.message}</span>
+                      </p>
+                    )}
                   </div>
 
                   {/* Correo */}
@@ -171,17 +172,17 @@ export const Contacto = () => {
                           required: "Este campo es requerido",
                           pattern: {
                             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                            message: "Correo electrónico inválido"
-                          }
+                            message: "Correo electrónico inválido",
+                          },
                         })}
                       />
                     </div>
                     {errors.correo && (
-                        <p className="error-message">
-                          <ExclamationCircleIcon className="error-icon" />
-                          <span>{errors.correo.message}</span>
-                        </p>
-                      )}
+                      <p className="error-message">
+                        <ExclamationCircleIcon className="error-icon" />
+                        <span>{errors.correo.message}</span>
+                      </p>
+                    )}
                   </div>
 
                   {/* Teléfono */}
@@ -196,17 +197,17 @@ export const Contacto = () => {
                           required: "Este campo es requerido",
                           pattern: {
                             value: /^[0-9]{9}$/,
-                            message: "Número de teléfono inválido"
-                          }
+                            message: "Número de teléfono inválido",
+                          },
                         })}
                       />
                     </div>
                     {errors.telefono && (
-                        <p className="error-message">
-                          <ExclamationCircleIcon className="error-icon" />
-                          <span>{errors.telefono.message}</span>
-                        </p>
-                      )}
+                      <p className="error-message">
+                        <ExclamationCircleIcon className="error-icon" />
+                        <span>{errors.telefono.message}</span>
+                      </p>
+                    )}
                   </div>
 
                   {/* Empresa */}
@@ -221,11 +222,11 @@ export const Contacto = () => {
                       />
                     </div>
                     {errors.empresa && (
-                        <p className="error-message">
-                          <ExclamationCircleIcon className="error-icon" />
-                          <span>{errors.empresa.message}</span>
-                        </p>
-                      )}
+                      <p className="error-message">
+                        <ExclamationCircleIcon className="error-icon" />
+                        <span>{errors.empresa.message}</span>
+                      </p>
+                    )}
                   </div>
 
                   {/* Rating */}
@@ -263,16 +264,16 @@ export const Contacto = () => {
                       placeholder="Si tienes algún comentario adicional, escríbelo aquí..."
                       className="input-field textarea-field"
                       {...register("mensaje", {
-                        required: "Este campo es requerido"
+                        required: "Este campo es requerido",
                       })}
                     />
                   </div>
                   {errors.mensaje && (
-                        <p className="error-message">
-                          <ExclamationCircleIcon className="error-icon" />
-                          <span>{errors.mensaje.message}</span>
-                        </p>
-                      )}
+                    <p className="error-message">
+                      <ExclamationCircleIcon className="error-icon" />
+                      <span>{errors.mensaje.message}</span>
+                    </p>
+                  )}
                 </div>
 
                 {/* Política de privacidad */}
@@ -283,7 +284,7 @@ export const Contacto = () => {
                       id="privacy"
                       className="rounded"
                       {...register("privacyPolicy", {
-                        required: "Debes aceptar la Política de Privacidad"
+                        required: "Debes aceptar la Política de Privacidad",
                       })}
                     />
                     <label htmlFor="privacy" className="privacy-policy-label">
@@ -316,4 +317,3 @@ export const Contacto = () => {
     </div>
   );
 };
-

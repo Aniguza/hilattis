@@ -2,46 +2,14 @@ import React from "react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import "../assets/css/Proyectos.css";
+import { useFetch } from "./apiService";
 
 export const Proyectos = () => {
-  const projects = [
-    {
-      id: 1,
-      title: "Proyecto Residencial",
-      description: "Diseño minimalista para espacios modernos",
-      image: "/src/assets/imgs/hilatis-fondo.jpeg",
-    },
-    {
-      id: 2,
-      title: "Diseño Comercial",
-      description: "Espacios comerciales con estilo único",
-      image: "/src/assets/imgs/hilatis-fondo.jpeg",
-    },
-    {
-      id: 3,
-      title: "Renovación Urbana",
-      description: "Transformación de espacios públicos",
-      image: "/src/assets/imgs/hilatis-fondo.jpeg",
-    },
-    {
-      id: 4,
-      title: "Diseño Sostenible",
-      description: "Proyectos eco-amigables y eficientes",
-      image: "/src/assets/imgs/hilatis-fondo.jpeg",
-    },
-    {
-      id: 5,
-      title: "Interiores Modernos",
-      description: "Espacios contemporáneos y funcionales",
-      image: "/src/assets/imgs/hilatis-fondo.jpeg",
-    },
-    {
-      id: 6,
-      title: "Proyecto Corporativo",
-      description: "Diseño de oficinas y espacios de trabajo",
-      image: "/src/assets/imgs/hilatis-fondo.jpeg",
-    },
-  ];
+  const {
+    data: proyectos,
+    loading: loadingProyectos,
+    error: errorProyectos,
+  } = useFetch("https://web-production-4880.up.railway.app/projects/");
 
   return (
     <div className="relative min-h-screen">
@@ -59,28 +27,44 @@ export const Proyectos = () => {
 
       <div className="container-proyectos">
         <div className="projects-grid">
-          {projects.map((project) => (
+        {loadingProyectos ? (
+          <p className="col-span-full text-center">Cargando proyectos...</p>
+        ) : errorProyectos ? (
+          <p className="col-span-full text-center text-red-500">
+            Error: {errorProyectos.message}
+          </p>
+        ) : proyectos && proyectos.length === 0 ? (
+          <p className="col-span-full text-center">
+            No hay proyectos disponibles.
+          </p>
+        ) : (
+          proyectos &&
+          proyectos.map((project) => (
             <a
               key={project.id}
-              href={project.link}
+              href={project.link || "#"}
               className="project-card"
               target="_blank"
               rel="noopener noreferrer"
             >
               <div className="project-image">
-                <img src={project.image} alt={project.title} />
+              <img
+                  src={project.imagen1}
+                  alt={project.titulo}
+                  
+                />
               </div>
               <div className="project-overlay">
                 <div className="project-content">
-                  <h3 className="project-title">{project.title}</h3>
-                  <p className="project-description">{project.description}</p>
+                  <h3 className="project-title">{project.titulo}</h3>
+                  <p className="project-description">{project.fecha_proyecto}</p>
                 </div>
               </div>
             </a>
-          ))}
+           ))
+          )}
         </div>
       </div>
-
       <Footer />
     </div>
   );

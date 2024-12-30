@@ -30,7 +30,7 @@ export const Navbar = () => {
       <div className="container">
         
         <div className="logo">
-          <Link to="/" className="navbar-logo"><img src={logoNombre} alt="" /></Link>
+          <Link to="/" className="navbar-logo"><p>Hillattis</p></Link>
         </div>
 
         <div className="hidden md:flex flex-grow justify-center space-x-4">
