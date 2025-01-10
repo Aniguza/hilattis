@@ -1,3 +1,4 @@
+// Componente actualizado: Tienda
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Navbar } from "./Navbar";
@@ -18,6 +19,8 @@ export const Tienda = () => {
     categories: true,
     status: true,
   });
+
+  const [sortOrder, setSortOrder] = useState("destacados");
 
   useEffect(() => {
     if (products) {
@@ -49,6 +52,21 @@ export const Tienda = () => {
     });
   };
 
+  const handleSortChange = (e) => {
+    setSortOrder(e.target.value);
+  };
+
+  const sortProducts = (products) => {
+    switch (sortOrder) {
+      case "menorPrecio":
+        return [...products].sort((a, b) => a.precio - b.precio);
+      case "mayorPrecio":
+        return [...products].sort((a, b) => b.precio - a.precio);
+      default:
+        return products; // Mantener destacados como predeterminado
+    }
+  };
+
   const filteredProducts = products
     ? products.filter((product) => {
         return Object.entries(selectedFilters).every(([filterId, selected]) => {
@@ -65,6 +83,8 @@ export const Tienda = () => {
         });
       })
     : [];
+
+  const sortedAndFilteredProducts = sortProducts(filteredProducts);
 
   const filters = [
     {
@@ -89,17 +109,29 @@ export const Tienda = () => {
     <div className="relative min-h-screen">
       <Navbar />
       <div className="productsPage">
-        <div className="heroSection">
-          <div className="heroImage">
-            <img
-              src="/wooden-background.jpg"
-              alt="Wooden background"
-              className="backgroundImage"
-            />
-          </div>
-          <div className="heroContent">
-            <h1>NUESTROS PRODUCTOS</h1>
-            <p>Descubre nuestra colección de productos más recientes</p>
+        {/* //Carrousel */}
+        <div className="breadcrumb">
+          <a href="/" className="breadcrumb-link">
+            Inicio
+          </a>
+          <span className="breadcrumb-separator">›</span>
+          <span className="breadcrumb-current">Tienda</span>
+        </div>
+
+        <div className="productsHeader">
+          <h1 className="productsTitle">Inodoros y asientos</h1>
+          <div className="sortOptions">
+            <label htmlFor="sortOrder">Ordenar por:</label>
+            <select
+              id="sortOrder"
+              value={sortOrder}
+              onChange={handleSortChange}
+              className="sortDropdown"
+            >
+              <option value="todos">Todos</option>
+              <option value="menorPrecio">Menor precio</option>
+              <option value="mayorPrecio">Mayor precio</option>
+            </select>
           </div>
         </div>
 
@@ -141,7 +173,7 @@ export const Tienda = () => {
           <main className="productsGrid">
             {loadingProducts && <div className="loading">Cargando...</div>}
             {errorProducts && <div className="error">{errorProducts}</div>}
-            {filteredProducts.map((product) => (
+            {sortedAndFilteredProducts.map((product) => (
               <Link
                 to={`/producto/${product.id_producto}`}
                 key={product.id_producto}
@@ -178,4 +210,3 @@ export const Tienda = () => {
     </div>
   );
 };
-
