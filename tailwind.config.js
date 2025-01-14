@@ -5,7 +5,17 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        adlam: ['"ADLaM Display"', 'serif'], // Define la fuente "adlam"
+      },
+      fontWeight: {
+        adlam: '400', // Define el peso de la fuente
+      },
+      fontStyle: {
+        adlam: 'normal', // Define el estilo de la fuente
+      },
+    },
   },
   plugins: [],
 }

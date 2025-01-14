@@ -109,7 +109,7 @@ export const Tienda = () => {
     <div className="relative min-h-screen">
       <Navbar />
       <div className="productsPage">
-        {/* //Carrousel */}
+        <img src="" alt="" />
         <div className="breadcrumb">
           <a href="/" className="breadcrumb-link">
             Inicio

@@ -27,7 +27,7 @@ export const Navbar = () => {
 
   return (
     <nav className={`navbar ${isHomePage && !scrolling ? 'transparent' : 'scrolled'}`}>
-      <div className="container">
+      <div className="container font-adlam">
         
         <div className="logo">
           <Link to="/" className="navbar-logo"><p>Hillattis</p></Link>

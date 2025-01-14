@@ -1,86 +1,198 @@
-/* Estilos globales para el body */
+@import url('https://fonts.googleapis.com/css2?family=ADLaM+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Gugi&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
 body {
     min-height: 100vh;
     position: relative;
   }
   
-  /* Estilo de la imagen de fondo */
-  .background-image {
+  .relative {
+    position: relative;
+    background-color: #ffffff;
+  }
+  
+  .content-container {
     width: 100%;
-    filter: brightness(0.3);
-    height: 100vh;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .text-container {
+    max-width: 700px;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #1a1a1a;
+  }
+  
+  .description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #666666;
+    max-width: 600px;
+  }
+  
+  .image-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  .feature-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
     object-fit: cover;
   }
   
-  /* Contenedor de la capa que cubre el fondo */
-  .content-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .content-container {
+      padding: 2rem 1rem;
+    }
+  
+    .grid-container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  
+    .title {
+      font-size: 2.5rem;
+    }
+  
+    .description {
+      font-size: 1.125rem;
+    }
+  
+    .text-container {
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+  
+  /*--------------------------Sección de puntos fuertes------------------------------------*/
+.features-container{
+  display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #f9f8f4; /* Fondo suave */
+    height: 500px;
+}
+
+/* Contenedor general */
+.features-grid {
+  display: grid;
+  grid-template-areas:
+    "top-left central-image top-right"
+    "bottom-left central-image bottom-right";
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 50px;
+  padding: 20px;
+  max-width: 1300px;
+}
+
+/* Tarjetas */
+.feature-card {
+  display: flex; /* Cambiar a diseño horizontal */
+  align-items: flex-start;
+  background: #ffffff; /* Fondo blanco */
+  border: 1px solid #e0e0e0; /* Borde sutil */
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  gap: 30px; /* Espacio entre ícono y texto */
+}
+
+/* Íconos */
+.icon {
+  font-size: 24px; /* Ajustar tamaño del ícono */
+  color: #00a86b; /* Color verde para íconos */
+}
+
+.feature-content{
+  font-family: "Inter", serif;
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 5px; /* Espacio inferior para separar título y texto */
+    color: #333333;
+  }
+
+   p {
+    font-size: 14px;
+    line-height: 1.6; /* Mejorar legibilidad */
+    color: #666666;
+    margin: 0;
+  }
+}
+
+/* Imagen central */
+.central-image {
+  grid-area: central-image;
+  text-align: center;
+}
+
+.central-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .container {
+    grid-template-areas:
+      "top-left"
+      "top-right"
+      "central-image"
+      "bottom-left"
+      "bottom-right";
+    grid-template-columns: 1fr;
+    gap: 16px; /* Reducir el espacio */
+  }
+
+  .central-image img {
+    margin: 20px auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .feature-card {
+    flex-direction: column; /* Cambiar a diseño vertical en móviles */
+    align-items: center;
     text-align: center;
-    padding-left: 1rem;
-    padding-right: 1rem;
   }
-  
-  /* Estilo del contenedor de texto */
-  .text-container {
-    width: 100%;
-    max-width: 70vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  /* Estilo del título */
-  .title {
-    color: #BEAC8B;
-    font-weight: bold;
-    line-height: 1.25;
-    font-size: 3.5vw;
-  }
-  
-  /* Estilo del párrafo */
-  .description {
-    color: #BEAC8B;
-    margin-left: 4vw;
-    margin-right: 4vw;
-    margin-top: 1rem;
-    font-size: 1.5vw;
-  }
-  
-  @media (max-width: 426px) {
-    .text-container {
-        max-width: 70vw;
-    }
-    .title{
-        font-size: 6vw;
-    }
-    .description {
-        font-size: 3vw;
 
-    }
+  .icon {
+    margin-bottom: 10px; /* Espacio debajo del ícono */
+  }
 
+  .feature-content h3 {
+    font-size: 16px;
   }
-  
- 
-  
-  /* Sección con fondo negro */
-  .bg-black {
-    background-color: black;
-    padding-top: 10rem;
-    padding-bottom: 10rem;
+
+  .feature-content p {
+    font-size: 13px;
   }
-  
-  /* Estilo del texto blanco */
-  .text-white {
-    color: white;
-  }
-  
+}
+
   /* -------------------------------------------Sección de productos --------------------------------------------*/
   .products-section {
-    background-color: #E1D7BF;
+    
     padding: 4rem 2rem;
     width: 100%;
   }
@@ -193,7 +305,7 @@ body {
 
 .bg-preguntas {
   width: 100%;
-  filter: brightness(0.5);
+  filter: brightness(0.3);
   height: 100vh;
   object-fit: cover;
 }

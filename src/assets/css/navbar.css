@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=ADLaM+Display&display=swap');
+
+
+
 /* Estilo base del Navbar */
 .navbar {
   position: fixed;
@@ -6,18 +10,11 @@
   top: 0;
   z-index: 10;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #1C160F;
+  
 }
 
-/* Estilo del Navbar transparente */
-.navbar.transparent {
-  background-color: transparent; /* Fondo transparente por defecto */
-}
 
-/* Estilo del Navbar cuando se hace scroll o no está en la página de inicio */
-.navbar.scrolled {
-  background-color: #1C160F; /* Fondo oscuro semi-transparente */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-}
 
 /* Estilo del contenedor */
 .container {
@@ -47,7 +44,7 @@
   color: #E1D7BF;
   text-decoration: none;
   padding: 8px 12px;
-  font-weight: bold;
+  
   transition: background-color 0.2s ease;
 }
 
