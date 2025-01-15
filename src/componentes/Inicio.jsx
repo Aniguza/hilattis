@@ -9,7 +9,6 @@ import img1 from "../assets/imgs/inicio1.png";
 import img2 from "../assets/imgs/inicio2.png";
 import img3 from "../assets/imgs/inicio3.jpeg";
 
-
 export const Inicio = () => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -69,7 +68,6 @@ export const Inicio = () => {
   return (
     <body className="relative min-h-screen">
       <Navbar />
-
       <div className="relative">
         <div className="content-container">
           <div className="grid-container">
@@ -90,11 +88,7 @@ export const Inicio = () => {
               </p>
             </div>
             <div className="image-container">
-              <img
-                src={img1}
-                alt="Interior design"
-                className="feature-image"
-              />
+              <img src={img1} alt="Interior design" className="feature-image" />
             </div>
           </div>
         </div>

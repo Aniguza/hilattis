@@ -32,7 +32,7 @@ body {
   font-size: 2.25rem; /* text-4xl */
   font-weight: bold;
   color: #fff; /* Texto blanco */
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .proy-descr {
@@ -40,6 +40,8 @@ body {
   max-width: 36rem; /* max-w-xl */
   margin: 0 auto; /* Centrar contenido */
   line-height: 1.5;
+  font-size: "Inter", serif;
+  color: #E1D7BF;
 }
 
 /* Estilos de la cuadrícula de proyectos */
@@ -72,60 +74,80 @@ body {
 }
 
 .project-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
   position: relative;
-  overflow: hidden;
-  border-radius: 1rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  background-color: black;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  gap: 8px;
 }
 
 .project-image {
+  position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .project-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   display: block;
-}
-
-.project-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-  opacity: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 1rem;
-  transition: opacity 0.3s ease;
-}
-
-.project-card:hover .project-overlay {
-  opacity: 1; /* Solo aparece al pasar el mouse */
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 .project-content {
   color: #fff;
-  text-align: left;
+  text-align: right;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem;
 }
 
 .project-title {
-  font-size: 1.25rem;
+  margin-top: 10px;
+  text-align: left;
+  font-size: 18px;
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  color: #1C160F;
+}
+.project-description {
+  font-family: "Inter", serif;
+  color: #615944;
+  font-size: 13px;
+}
+.project-read-more{
+  color: #615944;
+  font-family: "Inter", serif;
+  font-weight: bold;
+  font-size: 13px;
 }
 
-.project-description {
-  font-size: 0.9rem;
-  color: #e0e0e0;
+/* Responsive */
+@media (max-width: 768px) {
+  .project-content {
+    font-size: 12px; /* Ajusta el tamaño del texto */
+    padding: 8px;
+  }
+
+  .project-title {
+    font-size: 16px; /* Reduce el tamaño del título */
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-content {
+    font-size: 10px; /* Texto más pequeño en pantallas muy pequeñas */
+    padding: 6px;
+  }
+
+  .project-title {
+    font-size: 14px; /* Reduce aún más el tamaño del título */
+    margin-top: 6px;
+  }
 }
