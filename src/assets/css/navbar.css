@@ -28,7 +28,7 @@
 
 /* Estilos del logo */
 .logo {
-  margin-left: 70px;
+  margin-left: 20px;
   color: #E1D7BF;
   width: 100px;
   font-weight: bold;
@@ -48,6 +48,13 @@
   transition: background-color 0.2s ease;
 }
 
+.carro-menu{
+  display: flex;
+  gap: 10px;
+}
+.carrito{
+  position: relative;
+}
 .navbar-link:hover {
   background-color: #E1D7BF; /* Color de fondo en hover */
   border-radius: 8px;
@@ -63,7 +70,7 @@
 
 /* Menú desplegable para pantallas pequeñas */
 .md\:hidden {
-  display: block;
+  display: flex;
 }
 
 /* Estilo de los enlaces en el menú desplegable */

@@ -1,9 +1,14 @@
 /* CSS Ajustado para la página Tienda */
 .productsPage {
   min-height: 100vh;
-  background-color: #E1D7BF;
+  background-color: #F9F8F4;
   padding-top: 2rem;
   margin-top: 4rem;
+  padding-bottom: 4rem;
+}
+.imagenTienda{
+  margin: 0 auto;
+  background-color: #FFF;
 }
 .breadcrumb {
   display: flex;
@@ -12,6 +17,8 @@
   color: #6b7280; /* Color gris para texto */
   margin-bottom: 1rem; /* Espacio con la siguiente sección */
   padding: 0 1rem;
+  margin: 2rem auto;
+  max-width: 1200px;
 }
 .breadcrumb-link {
   color: #007BFF; /* Color azul para el enlace */
@@ -35,6 +42,7 @@
   justify-content: space-between; 
   align-items: center;
   padding: 0 1rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
   max-width: 1200px;
   margin-left: auto; 
@@ -49,12 +57,14 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  color: #333;
 }
 .sortDropdown {
   padding: 0.5rem;
   font-size: 1rem;
   border-radius: 0.25rem;
   border: 1px solid #CCC;
+  
 }
 
 /* Layout principal */
@@ -73,6 +83,7 @@
   border-radius: 0.5rem;
   padding: 1.5rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  height: max-content;
 }
 .filtersTitle {
   font-size: 1.5rem;
@@ -118,7 +129,7 @@
 /* Grilla de productos */
 .productsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 2rem;
 }
 .productCard {

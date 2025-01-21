@@ -125,14 +125,14 @@ body {
 
 .feature-content{
   font-family: "Inter", serif;
-  h3 {
+  .inicio-prod {
     font-size: 18px;
     font-weight: 600;
     margin: 0 0 5px; /* Espacio inferior para separar título y texto */
     color: #333333;
   }
 
-   p {
+   .inicio-des {
     font-size: 14px;
     line-height: 1.6; /* Mejorar legibilidad */
     color: #666666;

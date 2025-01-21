@@ -99,8 +99,8 @@ export const Inicio = () => {
           <div className="feature-card top-left">
             <div className="icon tree-icon">🌲</div>
             <div className="feature-content">
-              <h3>Madera Premium</h3>
-              <p>
+              <h3 className="inicio-prod">Madera Premium</h3>
+              <p className="inicio-des">
                 Seleccionada de los mejores árboles frutales, eucaliptos y
                 plantas aromáticas, nuestra madera ofrece una experiencia única
                 de aroma y calor.
