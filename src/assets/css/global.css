@@ -1,3 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=ADLaM+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Gugi&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+html{
+  background-color: #f9f8f4;
+}
+body {
+  
+  min-height: 100vh;
+  position: relative;
+}
+.relative {
+  position: relative;
+  background-color: #ffffff;
+}
+
+/* spinner */
 .spinner {
   position: absolute; /* Fija el spinner en la pantalla */
   top: 0;

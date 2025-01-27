@@ -1,67 +1,149 @@
 import React from "react"
 import { useCart } from "../context/cart-context"
 import { Link } from "react-router-dom"
-import { TrashIcon } from "@heroicons/react/24/outline"
+import { Navbar } from "./Navbar"
+import { Footer } from "./Footer"
+import { MinusIcon, PlusIcon, TrashIcon } from "@heroicons/react/24/outline"
+import "../assets/css/carrito.css"
+import "../assets/css/global.css"
 
 export const Carrito = () => {
-  const { cart, removeFromCart, clearCart } = useCart()
+  const { cart, removeFromCart, updateQuantity } = useCart()
+  console.log("Cart items:", cart)
 
-  const total = cart.reduce((sum, item) => sum + item.precio * item.cantidad, 0)
+  const formatPrice = (price) => {
+    const numPrice = Number(price)
+    return isNaN(numPrice) ? 0 : numPrice
+  }
+
+  const total = cart.reduce((sum, item) => sum + formatPrice(item.precio) * item.cantidad, 0)
+
+  const handleImageError = (e) => {
+    e.target.src = "/placeholder.svg"
+    e.target.onerror = null
+  }
 
   if (cart.length === 0) {
     return (
-      <div className="container mt-20 px-4 py-8">
-        <h1 className="text-3xl font-bold mb-4">Tu carrito está vacío</h1>
-        <p className="mb-4">No hay productos en tu carrito.</p>
-        <Link to="/Tienda" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-          Ir a la tienda
-        </Link>
+      <div className="carrito-container">
+        <div className="carrito-content">
+          <div className="carrito-empty">
+            <h2>Tu carrito está vacío</h2>
+            <p>¿No sabes qué comprar? ¡Miles de productos te esperan!</p>
+            <Link to="/Tienda" className="carrito-empty-button">
+              Ir a la tienda
+            </Link>
+          </div>
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="container mt-20 px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4">Tu Carrito</h1>
-      <div className="bg-white shadow-md rounded-lg overflow-hidden">
-        <table className="w-full">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="px-6 py-3 text-left">Producto</th>
-              <th className="px-6 py-3 text-left">Precio</th>
-              <th className="px-6 py-3 text-left">Cantidad</th>
-              <th className="px-6 py-3 text-left">Subtotal</th>
-              <th className="px-6 py-3 text-left">Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cart.map((item) => (
-              <tr key={item.id_producto} className="border-b">
-                <td className="px-6 py-4">{item.nombre}</td>
-                <td className="px-6 py-4">S/.{item.precio.toFixed(2)}</td>
-                <td className="px-6 py-4">{item.cantidad}</td>
-                <td className="px-6 py-4">S/.{(item.precio * item.cantidad).toFixed(2)}</td>
-                <td className="px-6 py-4">
-                  <button onClick={() => removeFromCart(item.id_producto)} className="text-red-500 hover:text-red-700">
-                    <TrashIcon className="h-5 w-5" />
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <div className="mt-8 flex justify-between items-center">
-        <div>
-          <h2 className="text-2xl font-bold">Total: S/.{total.toFixed(2)}</h2>
+    <div className="relative min-h-screen">
+      <Navbar />
+      <div className="carrito-layout">
+        <div className="carrito-main">
+          <div className="carrito-header">
+            <h1>
+              Carro <span className="text-gray-500">({cart.length} productos)</span>
+            </h1>
+          </div>
+
+          <div className="carrito-items-container">
+            <div className="vendedor-section">
+              <div className="vendedor-header">
+                <span className="vendedor-name">
+                  Vendido por <span className="text-green-600">Hilattis</span>
+                </span>
+              </div>
+
+              {cart.map((item) => {
+                const precio = formatPrice(item.precio)
+
+                return (
+                  <div key={item.id_producto} className="cart-item">
+                    <div className="item-main-content">
+                      <div className="item-image">
+                        {item.imagen_default ? (
+                          <img
+                            src={item.imagen_default || "/placeholder.svg"}
+                            alt={item.nombre}
+                            onError={handleImageError}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div className="placeholder-image">
+                            <span>Sin imagen</span>
+                          </div>
+                        )}
+                      </div>
+                      <div className="item-details">
+                        <h3>{item.nombre}</h3>
+                        <div className="item-brand">{item.marca}</div>
+                        <div className="item-price">
+                          <span className="current-price">S/ {precio.toFixed(2)}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="item-actions">
+                      <div className="quantity-control">
+                        <button
+                          onClick={() => updateQuantity(item.id_producto, item.cantidad - 1)}
+                          className="quantity-button"
+                          disabled={item.cantidad <= 1}
+                        >
+                          <MinusIcon className="h-4 w-4" />
+                        </button>
+                        <span className="quantity-display">{item.cantidad}</span>
+                        <button
+                          onClick={() => updateQuantity(item.id_producto, item.cantidad + 1)}
+                          className="quantity-button"
+                        >
+                          <PlusIcon className="h-4 w-4" />
+                        </button>
+                      </div>
+
+                      <button
+                        onClick={() => removeFromCart(item.id_producto)}
+                        className="delete-button"
+                        aria-label="Eliminar producto"
+                      >
+                        <TrashIcon className="h-5 w-5" />
+                      </button>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
         </div>
-        <div className="space-x-4">
-          <button onClick={clearCart} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
-            Vaciar Carrito
-          </button>
-          <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Proceder al Pago</button>
+
+        <div className="order-summary">
+          <div className="summary-content">
+            <h2>Resumen de la orden</h2>
+
+            <div className="summary-row">
+              <span>Productos ({cart.length})</span>
+              <span>S/ {total.toFixed(2)}</span>
+            </div>
+
+            <div className="summary-total">
+              <span>Total:</span>
+              <span>S/ {total.toFixed(2)}</span>
+            </div>
+
+            <button className="checkout-button">Continuar compra</button>
+
+            <div className="payment-promo">
+              <img src="/yape-logo.svg" alt="Yape" className="h-8 w-8" />
+              <span>¡Ahora puedes pagar tus compras con Yape!</span>
+            </div>
+          </div>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

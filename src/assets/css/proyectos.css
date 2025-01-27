@@ -1,9 +1,5 @@
 /* Estilos generales */
-body {
-  background-color: #e1d7bf;
-  color: #e6e0d8;
-  font-family: "Arial", sans-serif;
-}
+
 
 .hero-proyectos {
   background-image: url("/placeholder.svg?height=300&width=1200");

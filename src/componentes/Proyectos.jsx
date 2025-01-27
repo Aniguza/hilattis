@@ -1,7 +1,8 @@
 import React from "react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
-import "../assets/css/Proyectos.css";
+import "../assets/css/proyectos.css";
+import "../assets/css/global.css";
 import { useFetch } from "./apiService";
 
 export const Proyectos = () => {

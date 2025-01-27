@@ -4,6 +4,7 @@ import { StarIcon, ExclamationCircleIcon } from "@heroicons/react/24/outline";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import "../assets/css/contacto.css";
+import "../assets/css/global.css";
 import Fondo from "../assets/imgs/hilatis-fondo.jpeg";
 
 export const Contacto = () => {
@@ -38,7 +39,7 @@ export const Contacto = () => {
   return (
     <div className="relative min-h-screen">
       <Navbar />
-      <div className="min-h-screen bg-[#2a2420]">
+      <div className="min-h-screen">
         <section className="hero-section">
           <div className="custom-overlay"></div>
           <div className="custom-content">

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import "../assets/css/about.css";
+import "../assets/css/global.css";
 import { useFetch } from "./apiService";
 import img2 from "../assets/imgs/nosotros2.png";
 import { EyeIcon, StarIcon } from "@heroicons/react/24/outline";

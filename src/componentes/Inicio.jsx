@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../assets/css/inicio.css";
+import "../assets/css/global.css";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { useFetch } from "./apiService";
 import { Loader } from "./loader";
-
 import img1 from "../assets/imgs/inicio1.png";
 import img2 from "../assets/imgs/inicio2.png";
 import img3 from "../assets/imgs/inicio3.jpeg";

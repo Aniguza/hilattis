@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=ADLaM+Display&display=swap');
 
-
-
 /* Estilo base del Navbar */
 .navbar {
   position: fixed;
@@ -13,8 +11,6 @@
   background-color: #1C160F;
   
 }
-
-
 
 /* Estilo del contenedor */
 .container {

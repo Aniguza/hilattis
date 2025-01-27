@@ -6,6 +6,7 @@ import { useFetch } from "./apiService"
 import { useCart } from "../context/cart-context"
 
 import "../assets/css/tienda.css"
+import "../assets/css/global.css";
 
 import img1 from "../assets/imgs/tienda1.png"
 
@@ -109,7 +110,9 @@ export const Tienda = () => {
     addToCart({
       id_producto: product.id_producto,
       nombre: product.nombre,
-      precio: product.precio,
+      precio: Number(product.precio),
+      cantidad: 1,
+      imagen_default: product.imagen_default,
     })
   }
 
