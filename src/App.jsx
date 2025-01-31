@@ -8,6 +8,7 @@ import { About } from "./componentes/About"
 import { Contacto } from "./componentes/Contacto"
 import { Proyectos } from "./componentes/Proyectos"
 import { Carrito } from "./componentes/Carrito"
+import { ProductoDetalle } from "./componentes/ProductoDetalle"
 import { RutasProtegidas } from "./componentes/RutasProtegidas"
 
 function App() {
@@ -24,6 +25,14 @@ function App() {
             element={
               <RutasProtegidas isAllowed={canAccess}>
                 <Tienda />
+              </RutasProtegidas>
+            }
+          />
+          <Route
+            path="/producto/:id"
+            element={
+              <RutasProtegidas isAllowed={canAccess}>
+                <ProductoDetalle />
               </RutasProtegidas>
             }
           />

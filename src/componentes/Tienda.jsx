@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { Navbar } from "./Navbar"
 import { Footer } from "./Footer"
@@ -6,7 +6,7 @@ import { useFetch } from "./apiService"
 import { useCart } from "../context/cart-context"
 
 import "../assets/css/tienda.css"
-import "../assets/css/global.css";
+import "../assets/css/global.css"
 
 import img1 from "../assets/imgs/tienda1.png"
 
@@ -174,7 +174,7 @@ export const Tienda = () => {
             {errorProducts && <div className="error">{errorProducts}</div>}
             {sortedAndFilteredProducts.map((product) => (
               <div key={product.id_producto} className="productCard">
-                <Link to={`/producto/${product.id_producto}`}>
+                <Link to={`/producto/${product.id_producto}`} className="productLink">
                   <div className="productImage">
                     {product.imagen_default ? (
                       <img

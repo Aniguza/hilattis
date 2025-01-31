@@ -9,7 +9,6 @@ import "../assets/css/global.css"
 
 export const Carrito = () => {
   const { cart, removeFromCart, updateQuantity } = useCart()
-  console.log("Cart items:", cart)
 
   const formatPrice = (price) => {
     const numPrice = Number(price)
