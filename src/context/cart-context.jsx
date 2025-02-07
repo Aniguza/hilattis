@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react"
+import { createContext, useContext, useState, useEffect } from "react"
 
 const CartContext = createContext()
 
@@ -14,27 +14,38 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (product) => {
     setCart((currentCart) => {
-      const existingItem = currentCart.find((item) => item.id_producto === product.id_producto)
+      const productName = product.variante ? `${product.nombre} - ${product.variante}` : product.nombre
+
+      const existingItem = currentCart.find(
+        (item) => item.id_producto === product.id_producto && item.nombre === productName,
+      )
+
       if (existingItem) {
         return currentCart.map((item) =>
-          item.id_producto === product.id_producto ? { ...item, cantidad: item.cantidad + 1 } : item,
+          item.id_producto === product.id_producto && item.nombre === productName
+            ? { ...item, cantidad: item.cantidad + 1 }
+            : item,
         )
       }
-      return [...currentCart, { ...product, cantidad: 1 }]
+      return [...currentCart, { ...product, nombre: productName, cantidad: 1 }]
     })
   }
 
-  const removeFromCart = (productId) => {
-    setCart((currentCart) => currentCart.filter((item) => item.id_producto !== productId))
+  const removeFromCart = (productId, productName) => {
+    setCart((currentCart) =>
+      currentCart.filter((item) => !(item.id_producto === productId && item.nombre === productName)),
+    )
   }
 
-  const updateQuantity = (productId, newQuantity) => {
+  const updateQuantity = (productId, productName, newQuantity) => {
     if (newQuantity > 0) {
       setCart((currentCart) =>
-        currentCart.map((item) => (item.id_producto === productId ? { ...item, cantidad: newQuantity } : item)),
+        currentCart.map((item) =>
+          item.id_producto === productId && item.nombre === productName ? { ...item, cantidad: newQuantity } : item,
+        ),
       )
     } else {
-      removeFromCart(productId)
+      removeFromCart(productId, productName)
     }
   }
 

@@ -204,13 +204,7 @@
   max-width: 600px;
 }
 
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 800px;
-  margin: 0 auto;
-}
+
 
 .product-card {
   position: relative;
@@ -261,7 +255,20 @@
   margin: 0;
   opacity: 0.9;
 }
+.products-carousel {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
 
+.swiper-button-next,
+.swiper-button-prev {
+  color: #1a1a1a;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #d4b885;
+}
 @media (max-width: 768px) {
   .products-section {
     padding: 3rem 1rem;

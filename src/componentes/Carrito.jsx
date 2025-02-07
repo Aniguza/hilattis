@@ -1,4 +1,3 @@
-import React from "react"
 import { useCart } from "../context/cart-context"
 import { Link } from "react-router-dom"
 import { Navbar } from "./Navbar"
@@ -61,7 +60,7 @@ export const Carrito = () => {
                 const precio = formatPrice(item.precio)
 
                 return (
-                  <div key={item.id_producto} className="cart-item">
+                  <div key={`${item.id_producto}-${item.nombre}`} className="cart-item">
                     <div className="item-main-content">
                       <div className="item-image">
                         {item.imagen_default ? (
@@ -89,7 +88,7 @@ export const Carrito = () => {
                     <div className="item-actions">
                       <div className="quantity-control">
                         <button
-                          onClick={() => updateQuantity(item.id_producto, item.cantidad - 1)}
+                          onClick={() => updateQuantity(item.id_producto, item.nombre, item.cantidad - 1)}
                           className="quantity-button"
                           disabled={item.cantidad <= 1}
                         >
@@ -97,7 +96,7 @@ export const Carrito = () => {
                         </button>
                         <span className="quantity-display">{item.cantidad}</span>
                         <button
-                          onClick={() => updateQuantity(item.id_producto, item.cantidad + 1)}
+                          onClick={() => updateQuantity(item.id_producto, item.nombre, item.cantidad + 1)}
                           className="quantity-button"
                         >
                           <PlusIcon className="h-4 w-4" />
@@ -105,7 +104,7 @@ export const Carrito = () => {
                       </div>
 
                       <button
-                        onClick={() => removeFromCart(item.id_producto)}
+                        onClick={() => removeFromCart(item.id_producto, item.nombre)}
                         className="delete-button"
                         aria-label="Eliminar producto"
                       >

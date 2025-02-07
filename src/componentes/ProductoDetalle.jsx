@@ -1,47 +1,72 @@
-import React, { useState } from "react"
+import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
 import { Navbar } from "./Navbar"
 import { Footer } from "./Footer"
 import { useFetch } from "./apiService"
 import { useCart } from "../context/cart-context"
-import "../assets/css/producto.css"
+import "../assets/css/productoDetalle.css"
 
 export const ProductoDetalle = () => {
   const { id } = useParams()
   const { addToCart } = useCart()
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  
+  const [selectedVariant, setSelectedVariant] = useState(null)
+  const [productImages, setProductImages] = useState([])
+
   const {
     data: product,
-    loading,
-    error,
+    loading: loadingProduct,
+    error: errorProduct,
   } = useFetch(`https://web-production-4880.up.railway.app/productos/${id}`)
 
-  // Simulamos múltiples imágenes para el carousel
-  const productImages = product ? [
-    product.imagen_default,
-    product.img1,
-    product.img2,
-  ] : []
+  const {
+    data: variants,
+    loading: loadingVariants,
+    error: errorVariants,
+  } = useFetch(`https://web-production-4880.up.railway.app/variants/${id}/`)
+
+  useEffect(() => {
+    if (product) {
+      setProductImages([product.imagen_default])
+    }
+  }, [product])
+
+  useEffect(() => {
+    if (variants && variants.length > 0) {
+      setSelectedVariant(variants[0])
+      setProductImages([variants[0].img1, variants[0].img2, variants[0].img3].filter(Boolean))
+    }
+  }, [variants])
 
   const handlePrevImage = () => {
-    setCurrentImageIndex((prev) => 
-      prev === 0 ? productImages.length - 1 : prev - 1
-    )
+    setCurrentImageIndex((prev) => (prev === 0 ? productImages.length - 1 : prev - 1))
   }
 
   const handleNextImage = () => {
-    setCurrentImageIndex((prev) => 
-      prev === productImages.length - 1 ? 0 : prev + 1
-    )
+    setCurrentImageIndex((prev) => (prev === productImages.length - 1 ? 0 : prev + 1))
   }
 
   const handleThumbnailClick = (index) => {
     setCurrentImageIndex(index)
   }
 
+  const handleVariantSelect = (variant) => {
+    setSelectedVariant(variant)
+    setCurrentImageIndex(0)
+    setProductImages([variant.img1, variant.img2, variant.img3].filter(Boolean))
+  }
+
   const handleAddToCart = () => {
-    if (product) {
+    if (selectedVariant) {
+      addToCart({
+        id_producto: selectedVariant.producto,
+        nombre: product.nombre,
+        precio: Number(selectedVariant.precio),
+        cantidad: 1,
+        imagen_default: selectedVariant.img1,
+        variante: selectedVariant.nombre,
+      })
+    } else if (product) {
       addToCart({
         id_producto: product.id_producto,
         nombre: product.nombre,
@@ -52,35 +77,41 @@ export const ProductoDetalle = () => {
     }
   }
 
-  if (loading) return (
-    <div className="min-h-screen bg-[#FAF9F8]">
-      <Navbar />
-      <div className="container mx-auto px-4 py-8">
-        <div className="loading">Cargando...</div>
+  if (loadingProduct || loadingVariants) {
+    return (
+      <div className="min-h-screen bg-[#FAF9F8]">
+        <Navbar />
+        <div className="container mx-auto px-4 py-8">
+          <div className="loading">Cargando...</div>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
-  )
+    )
+  }
 
-  if (error) return (
-    <div className="min-h-screen bg-[#FAF9F8]">
-      <Navbar />
-      <div className="container mx-auto px-4 py-8">
-        <div className="error">Error al cargar el producto</div>
+  if (errorProduct) {
+    return (
+      <div className="min-h-screen bg-[#FAF9F8]">
+        <Navbar />
+        <div className="container mx-auto px-4 py-8">
+          <div className="error">Error al cargar el producto: {errorProduct}</div>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
-  )
+    )
+  }
 
-  if (!product) return (
-    <div className="min-h-screen bg-[#FAF9F8]">
-      <Navbar />
-      <div className="container mx-auto px-4 py-8">
-        <div className="error">Producto no encontrado</div>
+  if (!product) {
+    return (
+      <div className="min-h-screen bg-[#FAF9F8]">
+        <Navbar />
+        <div className="container mx-auto px-4 py-8">
+          <div className="error">Producto no encontrado</div>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
-  )
+    )
+  }
 
   return (
     <div className="min-h-screen bg-[#FAF9F8]">
@@ -93,11 +124,7 @@ export const ProductoDetalle = () => {
         <div className="product-layout">
           <div className="product-images">
             <div className="main-image-container">
-              <button 
-                className="carousel-button prev" 
-                onClick={handlePrevImage}
-                aria-label="Imagen anterior"
-              >
+              <button className="carousel-button prev" onClick={handlePrevImage} aria-label="Imagen anterior">
                 ‹
               </button>
               <div className="main-image">
@@ -113,11 +140,7 @@ export const ProductoDetalle = () => {
                   </div>
                 )}
               </div>
-              <button 
-                className="carousel-button next" 
-                onClick={handleNextImage}
-                aria-label="Siguiente imagen"
-              >
+              <button className="carousel-button next" onClick={handleNextImage} aria-label="Siguiente imagen">
                 ›
               </button>
             </div>
@@ -125,7 +148,7 @@ export const ProductoDetalle = () => {
               {productImages.map((image, index) => (
                 <button
                   key={index}
-                  className={`thumbnail ${index === currentImageIndex ? 'active' : ''}`}
+                  className={`thumbnail ${index === currentImageIndex ? "active" : ""}`}
                   onClick={() => handleThumbnailClick(index)}
                   aria-label={`Ver imagen ${index + 1}`}
                 >
@@ -136,19 +159,32 @@ export const ProductoDetalle = () => {
           </div>
 
           <div className="product-info">
-            <h1 className="product-title">{product.nombre}</h1>
-            <div className="product-price">S/. {product.precio}</div>
+            <h1 className="product-title">{product.nombre} </h1>
+            <div className="product-price">S/. {selectedVariant ? selectedVariant.precio : product.precio}</div>
+
+            {variants && variants.length > 0 && (
+              <div className="product-variants">
+                <h2>Variantes</h2>
+                <div className="variant-options">
+                  {variants.map((variant) => (
+                    <button
+                      key={variant.id_variante}
+                      className={`variant-option ${selectedVariant && selectedVariant.id_variante === variant.id_variante ? "active" : ""}`}
+                      onClick={() => handleVariantSelect(variant)}
+                    >
+                      {variant.nombre}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <div className="product-details">
               <h2>Detalle del producto</h2>
-              <p>{product.descripcion}</p>
+              <p>{selectedVariant ? selectedVariant.descripcion : product.descripcion}</p>
             </div>
 
-            <button
-              onClick={handleAddToCart}
-              disabled={product.estatus === "AGOTADO"}
-              className="add-to-cart-button"
-            >
+            <button onClick={handleAddToCart} disabled={product.estatus === "AGOTADO"} className="add-to-cart-button">
               {product.estatus === "AGOTADO" ? "Agotado" : "Agregar al carrito"}
             </button>
           </div>
@@ -158,3 +194,4 @@ export const ProductoDetalle = () => {
     </div>
   )
 }
+

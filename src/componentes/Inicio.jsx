@@ -9,6 +9,13 @@ import img1 from "../assets/imgs/inicio1.png";
 import img2 from "../assets/imgs/inicio2.png";
 import img3 from "../assets/imgs/inicio3.jpeg";
 
+//carousel
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 export const Inicio = () => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -93,7 +100,6 @@ export const Inicio = () => {
           </div>
         </div>
       </div>
-
       <div className="features-container">
         <div className="features-grid">
           <div className="feature-card top-left">
@@ -146,7 +152,6 @@ export const Inicio = () => {
           </div>
         </div>
       </div>
-
       {/* Sección de Productos */}
       <section className="products-section">
         <div className="products-header">
@@ -156,37 +161,49 @@ export const Inicio = () => {
           </p>
         </div>
 
-        <div className="products-grid">
-          {errorCategorias ? (
-            <p>Error: {errorCategorias}</p>
-          ) : categorias && categorias.length === 0 ? (
-            <p>No hay categorías disponibles.</p>
-          ) : (
-            categorias &&
-            categorias.map((categoria) => (
-              <div key={categoria.id} className="product-card">
-                <div
-                  className="product-background"
-                  style={{
-                    backgroundImage: `url(${
-                      categoria.imagen || "https://via.placeholder.com/300"
-                    })`,
-                  }}
-                >
-                  <div className="product-overlay">
-                    <h3 className="product-name">{categoria.nombre}</h3>
-                    <p className="product-description">
-                      {categoria.descripcion}
-                    </p>
+        {errorCategorias ? (
+          <p>Error: {errorCategorias}</p>
+        ) : categorias && categorias.length === 0 ? (
+          <p>No hay categorías disponibles.</p>
+        ) : (
+          <Swiper
+            modules={[Navigation, Pagination]}
+            spaceBetween={20}
+            slidesPerView={1}
+            breakpoints={{
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            navigation
+            pagination={{ clickable: true }}
+            className="products-carousel"
+          >
+            {categorias &&
+              categorias.map((categoria) => (
+                <SwiperSlide key={categoria.id}>
+                  <div className="product-card">
+                    <div
+                      className="product-background"
+                      style={{
+                        backgroundImage: `url(${
+                          categoria.imagen || "https://via.placeholder.com/300"
+                        })`,
+                      }}
+                    >
+                      <div className="product-overlay">
+                        <h3 className="product-name">{categoria.nombre}</h3>
+                        <p className="product-description">
+                          {categoria.descripcion}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))
-          )}
-        </div>
+                </SwiperSlide>
+              ))}
+          </Swiper>
+        )}
       </section>
-
-      {/* Preguntas frecuentes */}
+      ;{/* Preguntas frecuentes */}
       <section className="faq-section relative">
         <div className="w-[100%]">
           <img src={img3} alt="" className="bg-preguntas" />
